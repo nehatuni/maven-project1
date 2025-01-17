@@ -1,26 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+  
+  <!-- Root project element -->
   <modelVersion>4.0.0</modelVersion>
-
+  
+  <!-- Essential information -->
   <groupId>com.example.maven-project</groupId>
   <artifactId>maven-project</artifactId>
-  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Maven Project</name>
   <description>Sample Maven project with a working, deployable site.</description>
   <url>http://www.example.com</url>
-
+  
+  <!-- Properties -->
   <properties>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
   </properties>
-
+  
+  <!-- Submodules -->
   <modules>
     <module>server</module>
     <module>webapp</module>
   </modules>
-
+  
+  <!-- Distribution management (optional) -->
   <distributionManagement>
     <site>
       <id>site-server</id>
@@ -28,24 +35,26 @@
       <url>file:///tmp/maven-project-site</url>
     </site>
   </distributionManagement>
-
+  
+  <!-- Build section -->
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version> <!-- Make sure to use the latest version of the plugin -->
         <configuration>
           <source>17</source>
           <target>17</target>
         </configuration>
       </plugin>
-
+      
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <autoVersionSubmodules>true</autoVersionSubmodules>
         </configuration>
       </plugin>
-
+      
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
         <configuration>
@@ -82,38 +91,24 @@
           </reportPlugins>
         </configuration>
       </plugin>
+      
+      <!-- Add maven-war-plugin with updated version -->
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
     </plugins>
-
+    
     <pluginManagement>
       <plugins>
-        <plugin>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.8</version>
-        </plugin>
-
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.10.1</version>
         </plugin>
-
+        
         <plugin>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.8</version>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-jxr-plugin</artifactId>
-          <version>2.3</version>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-pmd-plugin</artifactId>
-          <version>2.6</version>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>2.4</version>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
         </plugin>
 
         <plugin>
@@ -122,46 +117,19 @@
         </plugin>
 
         <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>2.5</version>
-        </plugin>
-
-        <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0</version>
         </plugin>
 
         <plugin>
-          <artifactId>maven-surefire-report-plugin</artifactId>
-          <version>2.11</version>
-        </plugin>
-
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.11</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>2.3.3</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>taglist-maven-plugin</artifactId>
-          <version>2.4</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.mortbay.jetty</groupId>
-          <artifactId>jetty-maven-plugin</artifactId>
-          <version>8.0.0.M1</version>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.3.1</version>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
 
+  <!-- Dependency Management (optional) -->
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -205,16 +173,19 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
+  
+  <!-- SCM configuration (optional) -->
   <scm>
     <connection>scm:git:git@github.com:jleetutorial/maven-project.git</connection>
     <developerConnection>scm:git:git@github.com:jleetutorial/maven-project.git</developerConnection>
-    <tag>HEAD</tag>
     <url>http://github.com/jleetutorial/maven-project</url>
+    <tag>HEAD</tag>
   </scm>
 
+  <!-- Prerequisites (optional) -->
   <prerequisites>
     <maven>3.0.3</maven>
   </prerequisites>
-
+  
 </project>
+
